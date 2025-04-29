@@ -1,0 +1,9 @@
+// .well-known/mcp.json
+{
+  "mcp_version": "1.0",
+  "endpoints": {
+    "status": "/status",
+    "data": "/api/data"
+  },
+  "description": "이 서버는 AI와 외부 시스템을 연결하는 MCP 서버입니다."
+}

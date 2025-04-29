@@ -1,15 +1,25 @@
+// server.js
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
+const apiRouter = require('./routes/api');
 
 const app = express();
-const port = 3000;
+const PORT = 3000;
 
 app.use(bodyParser.json());
 
-// MCP Routes
-const mcpRoutes = require('./routes/mcp');
-app.use('/.well-known/mcp', mcpRoutes);
+// MCP 프로토콜 정의 경로
+app.use('/.well-known', express.static(path.join(__dirname, '.well-known')));
 
-app.listen(port, () => {
-  console.log(`MCP server is running on port ${port}`);
+// API 라우터
+app.use('/api', apiRouter);
+
+// 상태 확인용 엔드포인트
+app.get('/status', (req, res) => {
+  res.json({ status: 'MCP server is running' });
+});
+
+app.listen(PORT, () => {
+  console.log(`✅ MCP server is running at http://localhost:${PORT}`);
 });
