@@ -6,7 +6,7 @@ const path = require('path');
 const apiRouter = require('./routes/api');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT;
 
 app.use(bodyParser.json());
 
@@ -24,3 +24,4 @@ app.get('/status', (req, res) => {
 app.listen(PORT, () => {
   console.log(`✅ MCP server is running at http://localhost:${PORT}`);
 });
+ 
