@@ -13,7 +13,7 @@ router.get('/data', (req, res) => {
 // 🆕 새로운 /api/weather 추가
 router.get('/weather', async (req, res) => {
   const city = req.query.city || 'Seoul';  // 기본 도시는 서울
-  const apiKey = 'a33608d921613d54652d2a3275fd28b9';  // 발급받은 API 키로 교체!
+  const apiKey = process.env.OPENWEATHER_API_KEY;  // 발급받은 API 키로 교체!
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=kr`;
 
